@@ -1,0 +1,11 @@
+watch: true
+schema: http://localhost:3000/api/graphql
+documents: "schema/operations/*.graphql"
+generates:
+  ./hooks/apollo-hooks.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: true

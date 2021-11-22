@@ -1,0 +1,35 @@
+query GetPosts {
+  posts {
+    id
+    title
+    reward
+    description
+    location
+    reward_amount
+    date_missing
+    date_found
+    critter {
+      id
+      name
+      images
+    }
+  }
+}
+
+query GetPostsByIdOrTitle($where: PostWhereUniqueInput!) {
+  post(where: $where) {
+    id
+    title
+    reward
+    description
+    location
+    reward_amount
+    date_missing
+    date_found
+    critter {
+      id
+      name
+      images
+    }
+  }
+}
