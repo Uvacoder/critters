@@ -43,15 +43,52 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String    @id @default(uuid())
   name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  phone         String
   accounts      Account[]
   sessions      Session[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  posts  Post[] @relation("UserToPosts")
+  postId String
 
   @@map("users")
+}
+
+model Post {
+  id            String   @id @default(uuid())
+  title         String   @unique
+  description   String
+  date_missing  String?
+  date_found    String?
+  reward        Boolean?
+  reward_amount Int?
+  location      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+
+  critter   Critter @relation(fields: [critterId], references: [id])
+  User      User?   @relation("UserToPosts", fields: [userId], references: [id])
+  userId    String?
+  critterId String  @unique
+  @@map("posts")
+}
+
+model Critter {
+  id     String   @id @default(uuid())
+  name   String
+  images String[]
+
+  post   Post?
+  postId String?
+
+  @@map("critters")
 }
 
 model VerificationToken {
