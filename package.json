@@ -8,6 +8,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.17",
+    "@kenchi/nexus-plugin-prisma": "^0.39.0",
+    "@next-auth/prisma-adapter": "^0.5.2-next.19",
     "@prisma/client": "^3.5.0",
     "apollo-server-micro": "^3.5.0",
     "graphql": "^16.0.1",
