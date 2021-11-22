@@ -16,6 +16,8 @@ interface PrismaModels {
   Account: Prisma.Account
   Session: Prisma.Session
   User: Prisma.User
+  Post: Prisma.Post
+  Critter: Prisma.Critter
   VerificationToken: Prisma.VerificationToken
 }
 
@@ -31,8 +33,16 @@ interface NexusPrismaInputs {
       ordering: 'id' | 'sessionToken' | 'userId' | 'expires' | 'user'
     }
     users: {
-      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'name' | 'email' | 'emailVerified' | 'image' | 'accounts' | 'sessions'
-      ordering: 'id' | 'name' | 'email' | 'emailVerified' | 'image' | 'accounts' | 'sessions'
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'name' | 'email' | 'emailVerified' | 'image' | 'phone' | 'accounts' | 'sessions' | 'createdAt' | 'updatedAt' | 'posts' | 'postId'
+      ordering: 'id' | 'name' | 'email' | 'emailVerified' | 'image' | 'phone' | 'accounts' | 'sessions' | 'createdAt' | 'updatedAt' | 'posts' | 'postId'
+    }
+    posts: {
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
+      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
+    }
+    critters: {
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'name' | 'images' | 'post' | 'postId'
+      ordering: 'id' | 'name' | 'images' | 'post' | 'postId'
     }
     verificationTokens: {
       filtering: 'AND' | 'OR' | 'NOT' | 'identifier' | 'token' | 'expires'
@@ -54,6 +64,16 @@ interface NexusPrismaInputs {
       filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'sessionToken' | 'userId' | 'expires' | 'user'
       ordering: 'id' | 'sessionToken' | 'userId' | 'expires' | 'user'
     }
+    posts: {
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
+      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
+    }
+  }
+  Post: {
+
+  }
+  Critter: {
+
   }
   VerificationToken: {
 
@@ -69,6 +89,10 @@ interface NexusPrismaOutputs {
     sessions: 'Session'
     user: 'User'
     users: 'User'
+    post: 'Post'
+    posts: 'Post'
+    critter: 'Critter'
+    critters: 'Critter'
     verificationToken: 'VerificationToken'
     verificationTokens: 'VerificationToken'
   },
@@ -91,6 +115,18 @@ interface NexusPrismaOutputs {
     deleteOneUser: 'User'
     deleteManyUser: 'AffectedRowsOutput'
     upsertOneUser: 'User'
+    createOnePost: 'Post'
+    updateOnePost: 'Post'
+    updateManyPost: 'AffectedRowsOutput'
+    deleteOnePost: 'Post'
+    deleteManyPost: 'AffectedRowsOutput'
+    upsertOnePost: 'Post'
+    createOneCritter: 'Critter'
+    updateOneCritter: 'Critter'
+    updateManyCritter: 'AffectedRowsOutput'
+    deleteOneCritter: 'Critter'
+    deleteManyCritter: 'AffectedRowsOutput'
+    upsertOneCritter: 'Critter'
     createOneVerificationToken: 'VerificationToken'
     updateOneVerificationToken: 'VerificationToken'
     updateManyVerificationToken: 'AffectedRowsOutput'
@@ -128,8 +164,36 @@ interface NexusPrismaOutputs {
     email: 'String'
     emailVerified: 'DateTime'
     image: 'String'
+    phone: 'String'
     accounts: 'Account'
     sessions: 'Session'
+    createdAt: 'DateTime'
+    updatedAt: 'DateTime'
+    posts: 'Post'
+    postId: 'String'
+  }
+  Post: {
+    id: 'String'
+    title: 'String'
+    description: 'String'
+    date_missing: 'String'
+    date_found: 'String'
+    reward: 'Boolean'
+    reward_amount: 'Int'
+    location: 'String'
+    createdAt: 'DateTime'
+    updatedAt: 'DateTime'
+    critter: 'Critter'
+    User: 'User'
+    userId: 'String'
+    critterId: 'String'
+  }
+  Critter: {
+    id: 'String'
+    name: 'String'
+    images: 'String'
+    post: 'Post'
+    postId: 'String'
   }
   VerificationToken: {
     identifier: 'String'
@@ -143,6 +207,8 @@ interface NexusPrismaMethods {
   Account: Typegen.NexusPrismaFields<'Account'>
   Session: Typegen.NexusPrismaFields<'Session'>
   User: Typegen.NexusPrismaFields<'User'>
+  Post: Typegen.NexusPrismaFields<'Post'>
+  Critter: Typegen.NexusPrismaFields<'Critter'>
   VerificationToken: Typegen.NexusPrismaFields<'VerificationToken'>
   Query: Typegen.NexusPrismaFields<'Query'>
   Mutation: Typegen.NexusPrismaFields<'Mutation'>

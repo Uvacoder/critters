@@ -74,7 +74,7 @@ model Post {
 
 
   critter   Critter @relation(fields: [critterId], references: [id])
-  User      User?   @relation("UserToPosts", fields: [userId], references: [id])
+  user      User?   @relation("UserToPosts", fields: [userId], references: [id])
   userId    String?
   critterId String  @unique
   @@map("posts")
