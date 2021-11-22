@@ -13,6 +13,9 @@ const schema = makeSchema({
     nexusPrisma({
       experimentalCRUD: true,
       paginationStrategy: "prisma",
+      outputs: {
+        typegen: path.join(process.cwd(), "schema", "nexus.d.ts"),
+      },
     }),
   ],
   outputs: {

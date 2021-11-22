@@ -3,9 +3,18 @@
 
 
 type Query {
-  ok: Boolean!
+  user(where: UserWhereUniqueInput!): User
+  users(cursor: UserWhereUniqueInput, skip: Int, take: Int): [User!]!
 }
 
 type User {
+  email: String
   id: String!
+  image: String
+  name: String
+}
+
+input UserWhereUniqueInput {
+  email: String
+  id: String
 }
