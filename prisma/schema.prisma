@@ -73,10 +73,10 @@ model Post {
   updatedAt     DateTime @updatedAt
 
 
-  critter   Critter @relation(fields: [critterId], references: [id])
-  user      User?   @relation("UserToPosts", fields: [userId], references: [id])
+  critter   Critter? @relation(fields: [critterId], references: [id])
+  user      User?    @relation("UserToPosts", fields: [userId], references: [id])
   userId    String?
-  critterId String  @unique
+  critterId String   @unique
   @@map("posts")
 }
 

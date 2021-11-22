@@ -143,6 +143,12 @@ input AccountWhereUniqueInput {
   provider_providerAccountId: AccountProviderProviderAccountIdCompoundUniqueInput
 }
 
+type Critter {
+  id: String!
+  images: [String!]!
+  name: String!
+}
+
 input CritterCreateNestedOneWithoutPostInput {
   connect: CritterWhereUniqueInput
   connectOrCreate: CritterCreateOrConnectWithoutPostInput
@@ -165,10 +171,12 @@ input CritterCreateimagesInput {
   set: [String!]
 }
 
-input CritterUpdateOneRequiredWithoutPostInput {
+input CritterUpdateOneWithoutPostInput {
   connect: CritterWhereUniqueInput
   connectOrCreate: CritterCreateOrConnectWithoutPostInput
   create: CritterCreateWithoutPostInput
+  delete: Boolean
+  disconnect: Boolean
   update: CritterUpdateWithoutPostInput
   upsert: CritterUpsertWithoutPostInput
 }
@@ -299,6 +307,7 @@ input NullableStringFieldUpdateOperationsInput {
 }
 
 type Post {
+  critter: Critter
   date_found: String
   date_missing: String
   description: String!
@@ -310,9 +319,8 @@ type Post {
 }
 
 input PostCreateInput {
-  User: UserCreateNestedOneWithoutPostsInput
   createdAt: DateTime
-  critter: CritterCreateNestedOneWithoutPostInput!
+  critter: CritterCreateNestedOneWithoutPostInput
   date_found: String
   date_missing: String
   description: String!
@@ -322,12 +330,12 @@ input PostCreateInput {
   reward_amount: Int
   title: String!
   updatedAt: DateTime
+  user: UserCreateNestedOneWithoutPostsInput
 }
 
 input PostUpdateInput {
-  User: UserUpdateOneWithoutPostsInput
   createdAt: DateTimeFieldUpdateOperationsInput
-  critter: CritterUpdateOneRequiredWithoutPostInput
+  critter: CritterUpdateOneWithoutPostInput
   date_found: NullableStringFieldUpdateOperationsInput
   date_missing: NullableStringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
@@ -337,6 +345,7 @@ input PostUpdateInput {
   reward_amount: NullableIntFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  user: UserUpdateOneWithoutPostsInput
 }
 
 input PostWhereUniqueInput {

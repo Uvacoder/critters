@@ -37,8 +37,8 @@ interface NexusPrismaInputs {
       ordering: 'id' | 'name' | 'email' | 'emailVerified' | 'image' | 'phone' | 'accounts' | 'sessions' | 'createdAt' | 'updatedAt' | 'posts' | 'postId'
     }
     posts: {
-      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
-      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
+      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
     }
     critters: {
       filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'name' | 'images' | 'post' | 'postId'
@@ -65,8 +65,8 @@ interface NexusPrismaInputs {
       ordering: 'id' | 'sessionToken' | 'userId' | 'expires' | 'user'
     }
     posts: {
-      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
-      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'User' | 'userId' | 'critterId'
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
+      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
     }
   }
   Post: {
@@ -184,7 +184,7 @@ interface NexusPrismaOutputs {
     createdAt: 'DateTime'
     updatedAt: 'DateTime'
     critter: 'Critter'
-    User: 'User'
+    user: 'User'
     userId: 'String'
     critterId: 'String'
   }
