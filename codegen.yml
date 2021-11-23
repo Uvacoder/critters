@@ -2,7 +2,7 @@ watch: true
 schema: http://localhost:3000/api/graphql
 documents: "schema/operations/*.graphql"
 generates:
-  ./hooks/apollo-hooks.ts:
+  ./hooks/apollo.ts:
     plugins:
       - typescript
       - typescript-operations
