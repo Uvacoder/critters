@@ -37,7 +37,7 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }
@@ -48,14 +48,14 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  phone         String
+  phone         String?
   accounts      Account[]
   sessions      Session[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  posts  Post[] @relation("UserToPosts")
-  postId String
+  posts  Post[]  @relation("UserToPosts")
+  postId String?
 
   @@map("users")
 }
