@@ -2,16 +2,28 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { MantineProvider } from "@mantine/core";
-import { MainLayout, Navbar } from "components/Layout";
+import { ReactElement, ReactNode } from "react";
+import { Navbar } from "components/Layout";
+import type { NextPage } from "next";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  return (
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+  return getLayout(
     <SessionProvider session={session}>
       <MantineProvider withGlobalStyles withNormalizeCSS>
         <Navbar />
-        <MainLayout title="test">
-          <Component {...pageProps} />
-        </MainLayout>
+        <Component {...pageProps} />
       </MantineProvider>
     </SessionProvider>
   );

@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Anchor } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
 
@@ -9,8 +9,8 @@ type Props = {
 
 export const NavLink = ({ to, children }: Props) => {
   return (
-    <Box component={Link} href={to}>
-      <a role="menuitem">{children}</a>
-    </Box>
+    <Anchor component={Link} href={to}>
+      <a>{children}</a>
+    </Anchor>
   );
 };
