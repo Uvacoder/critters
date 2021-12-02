@@ -1,6 +1,6 @@
-import { Anchor } from "@mantine/core";
 import Link from "next/link";
 import React from "react";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 type Props = {
   to: string;
@@ -9,8 +9,10 @@ type Props = {
 
 export const NavLink = ({ to, children }: Props) => {
   return (
-    <Anchor component={Link} href={to}>
-      <a>{children}</a>
-    </Anchor>
+    <Link href={to}>
+      <ChakraLink fontWeight="semibold" color="gray.500" textDecoration="none">
+        {children}
+      </ChakraLink>
+    </Link>
   );
 };

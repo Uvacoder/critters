@@ -1,40 +1,46 @@
-import { Box, List, Text } from "@mantine/core";
 import { NavLink } from "components/common";
+import {
+  Box,
+  List,
+  ListItem,
+  UnorderedList,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <Box component="header">
+    <Box
+      as="header"
+      padding="1rem"
+      borderBottom="1px solid"
+      borderColor="gray.200"
+    >
       <Box
-        component="nav"
-        sx={{
-          display: "flex",
-          alignItems: "baseline",
-          justifyContent: "space-between",
-          borderBottom: "1px solid red",
-          padding: "0.5rem 2rem",
-        }}
+        as="nav"
+        display="flex"
+        alignItems="baseline"
+        maxWidth="6xl"
+        margin="auto"
       >
-        <Text
-          variant="gradient"
-          gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-          weight={700}
-          size="xl"
+        <Link href="/">
+          <ChakraLink fontWeight="bold" textDecoration="none" fontSize="xl">
+            critter
+          </ChakraLink>
+        </Link>
+        <UnorderedList
+          styleType="none"
+          display="flex"
+          gridGap="2"
+          marginLeft="auto"
         >
-          critter
-        </Text>
-        <List
-          aria-label="main site navigation"
-          listStyleType="none"
-          sx={{ display: "flex", gap: "0.8rem" }}
-        >
-          <List.Item>
+          <ListItem>
             <NavLink to="/">Home</NavLink>
-          </List.Item>
-          <List.Item>
+          </ListItem>
+          <ListItem>
             <NavLink to="/account">Account</NavLink>
-          </List.Item>
-        </List>
+          </ListItem>
+        </UnorderedList>
       </Box>
     </Box>
   );

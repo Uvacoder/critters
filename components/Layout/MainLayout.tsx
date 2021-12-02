@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import React from "react";
 
@@ -17,7 +17,7 @@ export const MainLayout = ({ title, children }: Props) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Box component="main" id="main-content">
+      <Box as="main" id="main-content">
         {children}
       </Box>
     </>
