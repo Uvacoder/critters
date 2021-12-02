@@ -24,14 +24,19 @@ export const Navbar = () => {
         margin="auto"
       >
         <Link href="/">
-          <ChakraLink fontWeight="bold" textDecoration="none" fontSize="xl">
+          <ChakraLink
+            fontWeight="bold"
+            textDecoration="none"
+            fontSize="xl"
+            style={{ textDecoration: "none" }}
+          >
             critter
           </ChakraLink>
         </Link>
         <UnorderedList
           styleType="none"
           display="flex"
-          gridGap="2"
+          gridGap="6"
           marginLeft="auto"
         >
           <ListItem>

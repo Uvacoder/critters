@@ -17,7 +17,14 @@ export const MainLayout = ({ title, children }: Props) => {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Box as="main" id="main-content">
+      <Box
+        as="main"
+        id="main-content"
+        maxWidth="6xl"
+        margin="auto"
+        flexGrow={1}
+        marginTop="2rem"
+      >
         {children}
       </Box>
     </>
