@@ -15,6 +15,7 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Button,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 
@@ -31,13 +32,13 @@ const Home: NextPage = () => {
           fontSize="4xl"
           fontWeight="bold"
           textAlign="center"
-          mt="4rem"
+          mt="3rem"
           w="md"
         >
           Help pet owners reunite with their pets.
         </Text>
       </Box>
-      <Box>
+      <Box mt="3rem">
         <form>
           <Grid h="auto" templateColumns="repeat(3, 1fr)" gap={4}>
             <GridItem colSpan={4}>
@@ -54,17 +55,54 @@ const Home: NextPage = () => {
                 </InputGroup>
               </FormControl>
             </GridItem>
-            <GridItem>
-              <FormControl id="species">
-                <FormLabel>Species</FormLabel>
-                <Select placeholder="Select species" variant="filled">
-                  <option value="dog">Dog</option>
-                  <option value="cat">Cat</option>
-                  <option value="bird">Bird</option>
-                </Select>
-              </FormControl>
-            </GridItem>
           </Grid>
+          <Box as="fieldset" mt="1rem">
+            <Text as="legend" fontWeight="bold" fontSize="lg">
+              Filter options
+            </Text>
+            <Grid h="auto" templateColumns="repeat(4, 1fr)" gap={4}>
+              <GridItem>
+                <FormControl id="species">
+                  <FormLabel>Species</FormLabel>
+                  <Select placeholder="Select species" variant="filled">
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="bird">Bird</option>
+                  </Select>
+                </FormControl>
+              </GridItem>
+              <GridItem>
+                <FormControl id="neighbourhood">
+                  <FormLabel>Neighbourhood</FormLabel>
+                  <Select placeholder="Select neighbourhood" variant="filled">
+                    <option value="etobicoke">Dog</option>
+                    <option value="north york">North York</option>
+                    <option value="richmond hill">Richmond hill</option>
+                  </Select>
+                </FormControl>
+              </GridItem>
+              <GridItem>
+                <FormControl id="dateStart">
+                  <FormLabel>Date missing start</FormLabel>
+                  <Input type="date" variant="filled" />
+                </FormControl>
+              </GridItem>
+              <GridItem>
+                <FormControl id="dateEnd">
+                  <FormLabel>Date missing end</FormLabel>
+                  <Input
+                    type="date"
+                    variant="filled"
+                    disabled
+                    value={new Date().toISOString().substring(0, 10)}
+                  />
+                </FormControl>
+              </GridItem>
+            </Grid>
+          </Box>
+          <Button type="submit" w="full" mt="2rem" colorScheme="blue">
+            Search
+          </Button>
         </form>
       </Box>
     </MainLayout>
