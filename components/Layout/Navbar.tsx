@@ -1,7 +1,7 @@
 import { NavLink } from "components/common";
 import {
   Box,
-  List,
+  Button,
   ListItem,
   UnorderedList,
   Link as ChakraLink,
@@ -28,6 +28,11 @@ export const Navbar = () => {
             fontWeight="bold"
             textDecoration="none"
             fontSize="xl"
+            tabIndex={0}
+            _focus={{
+              outline: "4px solid",
+              outlineColor: "blue.600",
+            }}
             style={{ textDecoration: "none" }}
           >
             critter
@@ -37,6 +42,7 @@ export const Navbar = () => {
           styleType="none"
           display="flex"
           gridGap="6"
+          alignItems="center"
           marginLeft="auto"
         >
           <ListItem>
@@ -44,6 +50,9 @@ export const Navbar = () => {
           </ListItem>
           <ListItem>
             <NavLink to="/account">Account</NavLink>
+          </ListItem>
+          <ListItem>
+            <Button colorScheme="blue">Login</Button>
           </ListItem>
         </UnorderedList>
       </Box>

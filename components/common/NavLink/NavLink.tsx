@@ -12,11 +12,12 @@ export const NavLink = ({ to, children }: Props) => {
     <Link href={to}>
       <ChakraLink
         fontWeight="semibold"
+        tabIndex={0}
         color="gray.500"
         style={{ textDecoration: "none" }}
         _focus={{
-          outline: "2px solid",
-          outlineColor: "teal.600",
+          outline: "4px solid",
+          outlineColor: "blue.600",
         }}
         fontSize="sm"
       >
