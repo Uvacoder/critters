@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useQuery } from "@apollo/client";
 import { useSession } from "next-auth/react";
 import { MainLayout } from "components/Layout";
-import { Text, Box, Button } from "@chakra-ui/react";
+import { Heading, Box } from "@chakra-ui/react";
 import { SearchFilter } from "components/Elements";
 
 const Home: NextPage = () => {
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout title="home">
       <Box display="flex" justifyContent="center">
-        <Text
+        <Heading
           as="h1"
           fontSize="4xl"
           fontWeight="bold"
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           w="md"
         >
           Help pet owners reunite with their pets.
-        </Text>
+        </Heading>
       </Box>
       <SearchFilter />
     </MainLayout>

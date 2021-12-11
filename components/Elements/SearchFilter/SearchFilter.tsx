@@ -1,8 +1,6 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Grid,
-  GridItem,
   FormControl,
   FormLabel,
   InputGroup,
@@ -22,7 +20,7 @@ export const SearchFilter = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <Box mt="3rem">
+    <Box mt="3rem" padding="1rem">
       <form>
         <Flex gridGap={4}>
           <FormControl id="search" flex="1">
@@ -51,7 +49,13 @@ export const SearchFilter = () => {
             <Text as="legend" fontWeight="bold" fontSize="lg">
               Filter options
             </Text>
-            <Flex gridGap={4}>
+            <Flex
+              gridGap={4}
+              direction={{
+                base: "column",
+                lg: "row",
+              }}
+            >
               <FormControl id="species">
                 <FormLabel>Species</FormLabel>
                 <Select placeholder="Select species" variant="filled">
@@ -75,6 +79,7 @@ export const SearchFilter = () => {
               <FormControl id="dateEnd">
                 <FormLabel>Date missing end</FormLabel>
                 <Input
+                  tabIndex={-1}
                   type="date"
                   variant="filled"
                   disabled
