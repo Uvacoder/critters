@@ -75,7 +75,7 @@ const Home: NextPage = () => {
                 <FormControl id="neighbourhood">
                   <FormLabel>Neighbourhood</FormLabel>
                   <Select placeholder="Select neighbourhood" variant="filled">
-                    <option value="etobicoke">Dog</option>
+                    <option value="etobicoke">Etobicoke</option>
                     <option value="north york">North York</option>
                     <option value="richmond hill">Richmond hill</option>
                   </Select>
