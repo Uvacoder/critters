@@ -4,12 +4,19 @@ import { useSession } from "next-auth/react";
 import { MainLayout } from "components/Layout";
 import {
   Text,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
+  Grid,
+  GridItem,
+  Box,
+  Select,
+  Input,
+  InputGroup,
+  InputRightElement,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
 } from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
 
 const Home: NextPage = () => {
   const { data: session, status } = useSession();
@@ -18,23 +25,48 @@ const Home: NextPage = () => {
 
   return (
     <MainLayout title="home">
-      <Text as="h1" fontSize="4xl" fontWeight="bold" textAlign="center">
-        Search for a pet
-      </Text>
-      <Tabs isFitted variant="enclosed">
-        <TabList>
-          <Tab>Lost</Tab>
-          <Tab>Found</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <p>lost pets</p>
-          </TabPanel>
-          <TabPanel>
-            <p>found pets</p>
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+      <Box display="flex" justifyContent="center">
+        <Text
+          as="h1"
+          fontSize="4xl"
+          fontWeight="bold"
+          textAlign="center"
+          mt="4rem"
+          w="md"
+        >
+          Help pet owners reunite with their pets.
+        </Text>
+      </Box>
+      <Box>
+        <form>
+          <Grid h="auto" templateColumns="repeat(3, 1fr)" gap={4}>
+            <GridItem colSpan={4}>
+              <FormControl id="search">
+                <FormLabel srOnly>Search for pet</FormLabel>
+                <InputGroup>
+                  <Input
+                    placeholder="Search by name or post title"
+                    size="md"
+                    variant="filled"
+                    type="search"
+                  />
+                  <InputRightElement children={<SearchIcon />} />
+                </InputGroup>
+              </FormControl>
+            </GridItem>
+            <GridItem>
+              <FormControl id="species">
+                <FormLabel>Species</FormLabel>
+                <Select placeholder="Select species" variant="filled">
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                  <option value="bird">Bird</option>
+                </Select>
+              </FormControl>
+            </GridItem>
+          </Grid>
+        </form>
+      </Box>
     </MainLayout>
   );
 };
