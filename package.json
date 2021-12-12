@@ -19,6 +19,7 @@
     "@prisma/client": "^3.5.0",
     "apollo-server-micro": "^3.5.0",
     "dayjs": "^1.10.7",
+    "formik": "^2.2.9",
     "framer-motion": "^4",
     "graphql": "15.5.1",
     "micro": "^9.3.4",

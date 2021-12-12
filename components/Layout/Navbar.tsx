@@ -8,8 +8,11 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 export const Navbar = () => {
+  const { data: session } = useSession();
+
   const { isOpen, onClose, onOpen } = useDisclosure();
   return (
     <Box
@@ -47,17 +50,24 @@ export const Navbar = () => {
           alignItems="center"
           marginLeft="auto"
         >
-          <ListItem>
-            <NavLink to="/">Home</NavLink>
-          </ListItem>
-          <ListItem>
-            <NavLink to="/account">Account</NavLink>
-          </ListItem>
-          <ListItem>
-            <Button colorScheme="blue" onClick={onOpen}>
-              Login
-            </Button>
-          </ListItem>
+          {!session?.user ? (
+            <>
+              <ListItem>
+                <Button colorScheme="blue" onClick={onOpen}>
+                  Login
+                </Button>
+              </ListItem>
+            </>
+          ) : (
+            <>
+              <ListItem>
+                <NavLink to="/account">Account</NavLink>
+              </ListItem>
+              <ListItem>
+                <NavLink to="/api/auth/signout">Logout</NavLink>
+              </ListItem>
+            </>
+          )}
         </UnorderedList>
       </Box>
       <Auth isOpen={isOpen} onClose={onClose} />
