@@ -5,7 +5,7 @@ import {
   FormLabel,
   InputGroup,
   Input,
-  InputRightElement,
+  InputLeftElement,
   Select,
   Button,
   Text,
@@ -32,7 +32,7 @@ export const SearchFilter = () => {
                 variant="filled"
                 type="search"
               />
-              <InputRightElement children={<SearchIcon />} />
+              <InputLeftElement children={<SearchIcon color="gray.400" />} />
             </InputGroup>
           </FormControl>
           <IconButton
@@ -73,18 +73,8 @@ export const SearchFilter = () => {
                 </Select>
               </FormControl>
               <FormControl id="dateStart">
-                <FormLabel>Date missing start</FormLabel>
+                <FormLabel>Missing since</FormLabel>
                 <Input type="date" variant="filled" />
-              </FormControl>
-              <FormControl id="dateEnd">
-                <FormLabel>Date missing end</FormLabel>
-                <Input
-                  tabIndex={-1}
-                  type="date"
-                  variant="filled"
-                  disabled
-                  value={new Date().toISOString().substring(0, 10)}
-                />
               </FormControl>
             </Flex>
           </Box>

@@ -1,14 +1,16 @@
-import { NavLink } from "components/common";
+import { Auth, NavLink } from "components/Elements";
 import {
   Box,
   Button,
   ListItem,
   UnorderedList,
   Link as ChakraLink,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
 export const Navbar = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
   return (
     <Box
       as="header"
@@ -52,10 +54,13 @@ export const Navbar = () => {
             <NavLink to="/account">Account</NavLink>
           </ListItem>
           <ListItem>
-            <Button colorScheme="blue">Login</Button>
+            <Button colorScheme="blue" onClick={onOpen}>
+              Login
+            </Button>
           </ListItem>
         </UnorderedList>
       </Box>
+      <Auth isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 };
