@@ -10,10 +10,11 @@ type Props = {
 };
 
 export const MainLayout = ({ title, children }: Props) => {
+  // add SEO
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>critters | {title}</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

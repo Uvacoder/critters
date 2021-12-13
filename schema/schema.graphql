@@ -143,6 +143,10 @@ input AccountWhereUniqueInput {
   provider_providerAccountId: AccountProviderProviderAccountIdCompoundUniqueInput
 }
 
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
 type Critter {
   id: String!
   images: [String!]!
@@ -165,6 +169,7 @@ input CritterCreateWithoutPostInput {
   images: CritterCreateimagesInput
   name: String!
   postId: String
+  species: String!
 }
 
 input CritterCreateimagesInput {
@@ -186,6 +191,7 @@ input CritterUpdateWithoutPostInput {
   images: CritterUpdateimagesInput
   name: StringFieldUpdateOperationsInput
   postId: NullableStringFieldUpdateOperationsInput
+  species: StringFieldUpdateOperationsInput
 }
 
 input CritterUpdateimagesInput {
@@ -217,6 +223,10 @@ input DateTimeFilter {
   lte: DateTime
   not: NestedDateTimeFilter
   notIn: [DateTime!]
+}
+
+input EnumStatusFieldUpdateOperationsInput {
+  set: Status
 }
 
 input IntNullableFilter {
@@ -286,10 +296,6 @@ input NestedStringNullableFilter {
   startsWith: String
 }
 
-input NullableBoolFieldUpdateOperationsInput {
-  set: Boolean
-}
-
 input NullableDateTimeFieldUpdateOperationsInput {
   set: DateTime
 }
@@ -308,26 +314,27 @@ input NullableStringFieldUpdateOperationsInput {
 
 type Post {
   critter: Critter
-  date_found: String
-  date_missing: String
+  dateFound: String
+  dateMissing: String
   description: String!
   id: String!
   location: String!
-  reward: Boolean
-  reward_amount: Int
+  reward: Boolean!
+  rewardAmount: Int
   title: String!
 }
 
 input PostCreateInput {
   createdAt: DateTime
   critter: CritterCreateNestedOneWithoutPostInput
-  date_found: String
-  date_missing: String
+  dateFound: String
+  dateMissing: String
   description: String!
   id: String
   location: String!
   reward: Boolean
-  reward_amount: Int
+  rewardAmount: Int
+  status: Status!
   title: String!
   updatedAt: DateTime
   user: UserCreateNestedOneWithoutPostsInput
@@ -336,13 +343,14 @@ input PostCreateInput {
 input PostUpdateInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   critter: CritterUpdateOneWithoutPostInput
-  date_found: NullableStringFieldUpdateOperationsInput
-  date_missing: NullableStringFieldUpdateOperationsInput
+  dateFound: NullableStringFieldUpdateOperationsInput
+  dateMissing: NullableStringFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
   id: StringFieldUpdateOperationsInput
   location: StringFieldUpdateOperationsInput
-  reward: NullableBoolFieldUpdateOperationsInput
-  reward_amount: NullableIntFieldUpdateOperationsInput
+  reward: BoolFieldUpdateOperationsInput
+  rewardAmount: NullableIntFieldUpdateOperationsInput
+  status: EnumStatusFieldUpdateOperationsInput
   title: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
   user: UserUpdateOneWithoutPostsInput
@@ -452,6 +460,11 @@ input SessionWhereUniqueInput {
   sessionToken: String
 }
 
+enum Status {
+  FOUND
+  LOST
+}
+
 input StringFieldUpdateOperationsInput {
   set: String
 }
@@ -512,8 +525,8 @@ input UserCreateWithoutPostsInput {
   id: String
   image: String
   name: String
-  phone: String!
-  postId: String!
+  phone: String
+  postId: String
   sessions: SessionCreateNestedManyWithoutUserInput
   updatedAt: DateTime
 }
@@ -536,8 +549,8 @@ input UserUpdateWithoutPostsInput {
   id: StringFieldUpdateOperationsInput
   image: NullableStringFieldUpdateOperationsInput
   name: NullableStringFieldUpdateOperationsInput
-  phone: StringFieldUpdateOperationsInput
-  postId: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  postId: NullableStringFieldUpdateOperationsInput
   sessions: SessionUpdateManyWithoutUserInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }

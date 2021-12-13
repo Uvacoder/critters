@@ -8,7 +8,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export const Navbar = () => {
   const { data: session } = useSession();
@@ -40,7 +40,7 @@ export const Navbar = () => {
             }}
             style={{ textDecoration: "none" }}
           >
-            critter
+            critters
           </ChakraLink>
         </Link>
         <UnorderedList
@@ -61,10 +61,15 @@ export const Navbar = () => {
           ) : (
             <>
               <ListItem>
+                <Button colorScheme="blue">Create a new post</Button>
+              </ListItem>
+              <ListItem>
                 <NavLink to="/account">Account</NavLink>
               </ListItem>
               <ListItem>
-                <NavLink to="/api/auth/signout">Logout</NavLink>
+                <NavLink to="#" onClick={() => signOut({ redirect: false })}>
+                  Logout
+                </NavLink>
               </ListItem>
             </>
           )}

@@ -5,7 +5,7 @@ import { prisma } from "lib/db";
 
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
-  // TODO: configure log in providers
+  // TODO: add google login provider
   providers: [
     EmailProvider({
       server: process.env.EMAIL_SERVER,
@@ -17,7 +17,7 @@ export default NextAuth({
     maxAge: 30 * 24 * 60 * 60,
   },
   jwt: {
-    secret: "ASFGKBDGWERQ@#E#!@@R$Q2Q@#!@!@#$",
+    secret: process.env.SECRET,
   },
   debug: true,
 });

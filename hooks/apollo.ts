@@ -157,6 +157,10 @@ export type AccountWhereUniqueInput = {
   provider_providerAccountId?: InputMaybe<AccountProviderProviderAccountIdCompoundUniqueInput>;
 };
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: InputMaybe<Scalars['Boolean']>;
+};
+
 export type Critter = {
   __typename?: 'Critter';
   id: Scalars['String'];
@@ -180,6 +184,7 @@ export type CritterCreateWithoutPostInput = {
   images?: InputMaybe<CritterCreateimagesInput>;
   name: Scalars['String'];
   postId?: InputMaybe<Scalars['String']>;
+  species: Scalars['String'];
 };
 
 export type CritterCreateimagesInput = {
@@ -201,6 +206,7 @@ export type CritterUpdateWithoutPostInput = {
   images?: InputMaybe<CritterUpdateimagesInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   postId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  species?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
 export type CritterUpdateimagesInput = {
@@ -230,6 +236,10 @@ export type DateTimeFilter = {
   lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeFilter>;
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
+};
+
+export type EnumStatusFieldUpdateOperationsInput = {
+  set?: InputMaybe<Status>;
 };
 
 export type IntNullableFilter = {
@@ -316,10 +326,6 @@ export type NestedStringNullableFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
-export type NullableBoolFieldUpdateOperationsInput = {
-  set?: InputMaybe<Scalars['Boolean']>;
-};
-
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: InputMaybe<Scalars['DateTime']>;
 };
@@ -339,26 +345,27 @@ export type NullableStringFieldUpdateOperationsInput = {
 export type Post = {
   __typename?: 'Post';
   critter?: Maybe<Critter>;
-  date_found?: Maybe<Scalars['String']>;
-  date_missing?: Maybe<Scalars['String']>;
+  dateFound?: Maybe<Scalars['String']>;
+  dateMissing?: Maybe<Scalars['String']>;
   description: Scalars['String'];
   id: Scalars['String'];
   location: Scalars['String'];
-  reward?: Maybe<Scalars['Boolean']>;
-  reward_amount?: Maybe<Scalars['Int']>;
+  reward: Scalars['Boolean'];
+  rewardAmount?: Maybe<Scalars['Int']>;
   title: Scalars['String'];
 };
 
 export type PostCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   critter?: InputMaybe<CritterCreateNestedOneWithoutPostInput>;
-  date_found?: InputMaybe<Scalars['String']>;
-  date_missing?: InputMaybe<Scalars['String']>;
+  dateFound?: InputMaybe<Scalars['String']>;
+  dateMissing?: InputMaybe<Scalars['String']>;
   description: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   location: Scalars['String'];
   reward?: InputMaybe<Scalars['Boolean']>;
-  reward_amount?: InputMaybe<Scalars['Int']>;
+  rewardAmount?: InputMaybe<Scalars['Int']>;
+  status: Status;
   title: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   user?: InputMaybe<UserCreateNestedOneWithoutPostsInput>;
@@ -367,13 +374,14 @@ export type PostCreateInput = {
 export type PostUpdateInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   critter?: InputMaybe<CritterUpdateOneWithoutPostInput>;
-  date_found?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  date_missing?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  dateFound?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  dateMissing?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
   id?: InputMaybe<StringFieldUpdateOperationsInput>;
   location?: InputMaybe<StringFieldUpdateOperationsInput>;
-  reward?: InputMaybe<NullableBoolFieldUpdateOperationsInput>;
-  reward_amount?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  reward?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  rewardAmount?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumStatusFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user?: InputMaybe<UserUpdateOneWithoutPostsInput>;
@@ -508,6 +516,11 @@ export type SessionWhereUniqueInput = {
   sessionToken?: InputMaybe<Scalars['String']>;
 };
 
+export enum Status {
+  Found = 'FOUND',
+  Lost = 'LOST'
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: InputMaybe<Scalars['String']>;
 };
@@ -569,8 +582,8 @@ export type UserCreateWithoutPostsInput = {
   id?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  phone: Scalars['String'];
-  postId: Scalars['String'];
+  phone?: InputMaybe<Scalars['String']>;
+  postId?: InputMaybe<Scalars['String']>;
   sessions?: InputMaybe<SessionCreateNestedManyWithoutUserInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -593,8 +606,8 @@ export type UserUpdateWithoutPostsInput = {
   id?: InputMaybe<StringFieldUpdateOperationsInput>;
   image?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  phone?: InputMaybe<StringFieldUpdateOperationsInput>;
-  postId?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  postId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   sessions?: InputMaybe<SessionUpdateManyWithoutUserInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -612,14 +625,14 @@ export type UserWhereUniqueInput = {
 export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, reward?: boolean | null | undefined, description: string, location: string, reward_amount?: number | null | undefined, date_missing?: string | null | undefined, date_found?: string | null | undefined, critter?: { __typename?: 'Critter', id: string, name: string, images: Array<string> } | null | undefined }> };
+export type GetPostsQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', id: string, title: string, reward: boolean, description: string, location: string, rewardAmount?: number | null | undefined, dateMissing?: string | null | undefined, dateFound?: string | null | undefined, critter?: { __typename?: 'Critter', id: string, name: string, images: Array<string> } | null | undefined }> };
 
 export type GetPostsByIdOrTitleQueryVariables = Exact<{
   where: PostWhereUniqueInput;
 }>;
 
 
-export type GetPostsByIdOrTitleQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, title: string, reward?: boolean | null | undefined, description: string, location: string, reward_amount?: number | null | undefined, date_missing?: string | null | undefined, date_found?: string | null | undefined, critter?: { __typename?: 'Critter', id: string, name: string, images: Array<string> } | null | undefined } | null | undefined };
+export type GetPostsByIdOrTitleQuery = { __typename?: 'Query', post?: { __typename?: 'Post', id: string, title: string, reward: boolean, description: string, location: string, rewardAmount?: number | null | undefined, dateMissing?: string | null | undefined, dateFound?: string | null | undefined, critter?: { __typename?: 'Critter', id: string, name: string, images: Array<string> } | null | undefined } | null | undefined };
 
 
 export const GetPostsDocument = gql`
@@ -630,9 +643,9 @@ export const GetPostsDocument = gql`
     reward
     description
     location
-    reward_amount
-    date_missing
-    date_found
+    rewardAmount
+    dateMissing
+    dateFound
     critter {
       id
       name
@@ -676,9 +689,9 @@ export const GetPostsByIdOrTitleDocument = gql`
     reward
     description
     location
-    reward_amount
-    date_missing
-    date_found
+    rewardAmount
+    dateMissing
+    dateFound
     critter {
       id
       name

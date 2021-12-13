@@ -5,9 +5,9 @@ query GetPosts {
     reward
     description
     location
-    reward_amount
-    date_missing
-    date_found
+    rewardAmount
+    dateMissing
+    dateFound
     critter {
       id
       name
@@ -23,9 +23,9 @@ query GetPostsByIdOrTitle($where: PostWhereUniqueInput!) {
     reward
     description
     location
-    reward_amount
-    date_missing
-    date_found
+    rewardAmount
+    dateMissing
+    dateFound
     critter {
       id
       name

@@ -8,9 +8,9 @@ export const Post = objectType({
     t.model.reward();
     t.model.description();
     t.model.location();
-    t.model.reward_amount();
-    t.model.date_missing();
-    t.model.date_found();
+    t.model.rewardAmount();
+    t.model.dateMissing();
+    t.model.dateFound();
     // @ts-ignore
     t.model.critter();
   },

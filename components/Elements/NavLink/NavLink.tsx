@@ -5,12 +5,14 @@ import { Link as ChakraLink } from "@chakra-ui/react";
 type Props = {
   to: string;
   children: React.ReactNode;
+  [x: string]: any;
 };
 
-export const NavLink = ({ to, children }: Props) => {
+export const NavLink = ({ to, children, ...rest }: Props) => {
   return (
     <Link href={to}>
       <ChakraLink
+        {...rest}
         fontWeight="semibold"
         tabIndex={0}
         color="gray.500"

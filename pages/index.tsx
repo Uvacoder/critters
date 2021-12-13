@@ -4,12 +4,9 @@ import { useSession } from "next-auth/react";
 import { MainLayout } from "components/Layout";
 import { Heading, Box } from "@chakra-ui/react";
 import { SearchFilter } from "components/Elements";
+import { PostList } from "features/posts/PostList";
 
 const Home: NextPage = () => {
-  const { data: session, status } = useSession();
-
-  console.log(session, status);
-
   return (
     <MainLayout title="home">
       <Box display="flex" justifyContent="center">
@@ -25,6 +22,7 @@ const Home: NextPage = () => {
         </Heading>
       </Box>
       <SearchFilter />
+      <PostList />
     </MainLayout>
   );
 };

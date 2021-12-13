@@ -37,12 +37,12 @@ interface NexusPrismaInputs {
       ordering: 'id' | 'name' | 'email' | 'emailVerified' | 'image' | 'phone' | 'accounts' | 'sessions' | 'createdAt' | 'updatedAt' | 'posts' | 'postId'
     }
     posts: {
-      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
-      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'dateMissing' | 'dateFound' | 'reward' | 'rewardAmount' | 'location' | 'createdAt' | 'updatedAt' | 'status' | 'critter' | 'user' | 'userId' | 'critterId'
+      ordering: 'id' | 'title' | 'description' | 'dateMissing' | 'dateFound' | 'reward' | 'rewardAmount' | 'location' | 'createdAt' | 'updatedAt' | 'status' | 'critter' | 'user' | 'userId' | 'critterId'
     }
     critters: {
-      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'name' | 'images' | 'post' | 'postId'
-      ordering: 'id' | 'name' | 'images' | 'post' | 'postId'
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'name' | 'images' | 'species' | 'post' | 'postId'
+      ordering: 'id' | 'name' | 'images' | 'species' | 'post' | 'postId'
     }
     verificationTokens: {
       filtering: 'AND' | 'OR' | 'NOT' | 'identifier' | 'token' | 'expires'
@@ -65,8 +65,8 @@ interface NexusPrismaInputs {
       ordering: 'id' | 'sessionToken' | 'userId' | 'expires' | 'user'
     }
     posts: {
-      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
-      ordering: 'id' | 'title' | 'description' | 'date_missing' | 'date_found' | 'reward' | 'reward_amount' | 'location' | 'createdAt' | 'updatedAt' | 'critter' | 'user' | 'userId' | 'critterId'
+      filtering: 'AND' | 'OR' | 'NOT' | 'id' | 'title' | 'description' | 'dateMissing' | 'dateFound' | 'reward' | 'rewardAmount' | 'location' | 'createdAt' | 'updatedAt' | 'status' | 'critter' | 'user' | 'userId' | 'critterId'
+      ordering: 'id' | 'title' | 'description' | 'dateMissing' | 'dateFound' | 'reward' | 'rewardAmount' | 'location' | 'createdAt' | 'updatedAt' | 'status' | 'critter' | 'user' | 'userId' | 'critterId'
     }
   }
   Post: {
@@ -176,13 +176,14 @@ interface NexusPrismaOutputs {
     id: 'String'
     title: 'String'
     description: 'String'
-    date_missing: 'String'
-    date_found: 'String'
+    dateMissing: 'String'
+    dateFound: 'String'
     reward: 'Boolean'
-    reward_amount: 'Int'
+    rewardAmount: 'Int'
     location: 'String'
     createdAt: 'DateTime'
     updatedAt: 'DateTime'
+    status: 'Status'
     critter: 'Critter'
     user: 'User'
     userId: 'String'
@@ -192,6 +193,7 @@ interface NexusPrismaOutputs {
     id: 'String'
     name: 'String'
     images: 'String'
+    species: 'String'
     post: 'Post'
     postId: 'String'
   }

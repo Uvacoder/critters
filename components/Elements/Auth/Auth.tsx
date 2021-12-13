@@ -18,6 +18,7 @@ import {
 import { signIn } from "next-auth/react";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { Formik, Form, Field } from "formik";
+import { useRef } from "react";
 
 type Props = {
   isOpen: boolean;
@@ -27,11 +28,13 @@ type Props = {
 export const Auth = ({ isOpen, onClose }: Props) => {
   const toast = useToast();
 
+  const initialFocus = useRef();
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} initialFocusRef={initialFocus}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Log in to critter</ModalHeader>
+        <ModalHeader>Log in to critters</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6}>
           <Formik
@@ -76,6 +79,7 @@ export const Auth = ({ isOpen, onClose }: Props) => {
                         placeholder="user@example.com"
                         type="email"
                         id="email"
+                        ref={initialFocus}
                         autoComplete="on"
                       />
                       <FormErrorMessage>{form.errors.email}</FormErrorMessage>
