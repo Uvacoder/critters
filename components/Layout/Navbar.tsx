@@ -67,7 +67,7 @@ export const Navbar = () => {
           ) : (
             <>
               <ListItem>
-                <Button colorScheme="blue">Create a new post</Button>
+                <Button>Create a new post</Button>
               </ListItem>
               <ListItem>
                 <NavLink to="/account">Account</NavLink>

@@ -1,4 +1,4 @@
-import { Spinner, Flex, Text, Grid, GridItem } from "@chakra-ui/react";
+import { Text, Grid, GridItem, Skeleton } from "@chakra-ui/react";
 import { useGetPostsQuery } from "hooks/apollo";
 import { Post } from "./Post";
 
@@ -32,9 +32,21 @@ export const PostList = () => {
 
   if (loading) {
     return (
-      <Flex justify="center">
-        <Spinner size="lg" />
-      </Flex>
+      <Grid
+        padding="1rem"
+        templateColumns={{
+          base: "repeat(1, 1fr)",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(3, 1fr)",
+        }}
+        gridGap={3}
+      >
+        {Array.from({ length: 3 }, (_, i) => (
+          <GridItem>
+            <Skeleton height="536px" />
+          </GridItem>
+        ))}
+      </Grid>
     );
   }
 
