@@ -110,6 +110,7 @@ export const Auth = ({ isOpen, onClose }: Props) => {
             w="100%"
             aria-label="Log in with your google account"
             leftIcon={<AiOutlineGoogle />}
+            onClick={() => signIn("google")}
           >
             Log in with Google
           </Button>
