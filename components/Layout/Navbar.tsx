@@ -6,9 +6,12 @@ import {
   UnorderedList,
   Link as ChakraLink,
   useDisclosure,
+  Icon,
+  Flex,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { FaPaw } from "react-icons/fa";
 
 export const Navbar = () => {
   const { data: session } = useSession();
@@ -24,25 +27,28 @@ export const Navbar = () => {
       <Box
         as="nav"
         display="flex"
-        alignItems="baseline"
+        alignItems="center"
         maxWidth="6xl"
         margin="auto"
       >
-        <Link href="/">
-          <ChakraLink
-            fontWeight="bold"
-            textDecoration="none"
-            fontSize="xl"
-            tabIndex={0}
-            _focus={{
-              outline: "4px solid",
-              outlineColor: "blue.600",
-            }}
-            style={{ textDecoration: "none" }}
-          >
-            critters
-          </ChakraLink>
-        </Link>
+        <Flex alignItems="center" gridGap={2}>
+          <Icon as={FaPaw} h={6} w={6} />
+          <Link href="/">
+            <ChakraLink
+              fontWeight="bold"
+              fontSize="xl"
+              tabIndex={0}
+              colorScheme="blue"
+              _focus={{
+                outline: "4px solid",
+                outlineColor: "blue.600",
+              }}
+              style={{ textDecoration: "none" }}
+            >
+              critters
+            </ChakraLink>
+          </Link>
+        </Flex>
         <UnorderedList
           styleType="none"
           display="flex"
