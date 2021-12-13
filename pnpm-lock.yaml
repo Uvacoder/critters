@@ -16,6 +16,7 @@ specifiers:
   '@types/node': 16.11.9
   '@types/react': 17.0.36
   apollo-server-micro: ^3.5.0
+  date-fns: ^2.27.0
   dayjs: ^1.10.7
   eslint: '7'
   eslint-config-next: 12.0.4
@@ -44,6 +45,7 @@ dependencies:
   '@next-auth/prisma-adapter': 0.5.2-next.19_5f2188c15616c466d0ed074105e0682c
   '@prisma/client': 3.5.0_prisma@3.5.0
   apollo-server-micro: 3.5.0_graphql@15.5.1+micro@9.3.4
+  date-fns: 2.27.0
   dayjs: 1.10.7
   formik: 2.2.9_react@17.0.2
   framer-motion: 4.1.17_react-dom@17.0.2+react@17.0.2
@@ -3758,6 +3760,11 @@ packages:
   /date-fns/1.30.1:
     resolution: {integrity: sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==}
     dev: true
+
+  /date-fns/2.27.0:
+    resolution: {integrity: sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /dayjs/1.10.7:
     resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}

@@ -27,7 +27,7 @@ export const MainLayout = ({ title, children }: Props) => {
         maxWidth="6xl"
         margin="auto"
         flexGrow={1}
-        marginTop="2rem"
+        py="5rem"
       >
         {children}
       </Box>

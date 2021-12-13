@@ -15,7 +15,6 @@ const Home: NextPage = () => {
           fontSize="4xl"
           fontWeight="bold"
           textAlign="center"
-          mt="3rem"
           w="md"
         >
           Help pet owners reunite with their pets.

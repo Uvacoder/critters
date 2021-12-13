@@ -3,15 +3,31 @@ import { MdOutlineAttachMoney } from "react-icons/md";
 import { SearchIcon } from "@chakra-ui/icons";
 import { FaPaw } from "react-icons/fa";
 import { formatDate } from "lib/util";
+import { formatDistance } from "date-fns";
+import { useRouter } from "next/router";
 
 export const Post = ({ post }) => {
   // crop images with cloudinary before upload
+
+  const router = useRouter();
   return (
     <LinkBox
+      role="link"
+      aria-label={`View missing pet post for ${post?.critter?.name}`}
       borderWidth="1px"
       borderRadius="lg"
       maxW={{ base: "100%", md: "sm" }}
       overflow="hidden"
+      as="article"
+      tabIndex={0}
+      _focus={{
+        outline: "4px solid",
+        outlineColor: "blue.600",
+      }}
+      onKeyPress={(e) => {
+        e.preventDefault();
+        if (e.code === "Enter" || e.code === "Space") router.push("/account");
+      }}
     >
       <Box>
         <Image
@@ -22,16 +38,19 @@ export const Post = ({ post }) => {
           w="100%"
         />
       </Box>
-      <Box p="4">
-        <Text fontWeight="bold" fontSize="xl">
-          <LinkOverlay href="#">{post?.critter?.name}</LinkOverlay>
+      <Box p="4" as="section">
+        <Text fontWeight="bold" fontSize="xl" isTruncated as="h2">
+          <LinkOverlay tabIndex={-1} href="#">
+            {post?.critter?.name}
+          </LinkOverlay>
         </Text>
         <Text as="time" dateTime={post.date_missing} color="gray.500">
-          Missing since {formatDate(post.date_missing)}
+          {post?.status === "LOST" ? "Missing since " : "Found on "}{" "}
+          {formatDate(post.date_missing)}
         </Text>
         <Flex alignItems="center">
           <MdOutlineAttachMoney />
-          <Text>{post.reward && post.reward_amount}</Text>
+          <Text>{post.reward && post.reward_amount} reward</Text>
         </Flex>
         <Flex alignItems="center" gridGap={2}>
           <SearchIcon />
@@ -43,6 +62,15 @@ export const Post = ({ post }) => {
         </Flex>
         {/* <Text color="gray.500">{post.description}</Text> */}
       </Box>
+      <Flex as="footer" p="4" color="gray.500">
+        <Text>
+          Posted{" "}
+          <Text as="time" dateTime={post.createdAt}>
+            {formatDistance(new Date(), new Date(post.createdAt))}
+          </Text>{" "}
+          ago
+        </Text>
+      </Flex>
     </LinkBox>
   );
 };

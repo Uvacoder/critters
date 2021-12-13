@@ -1,4 +1,4 @@
-import { Stack, Spinner, Flex, Text, Grid, GridItem } from "@chakra-ui/react";
+import { Spinner, Flex, Text, Grid, GridItem } from "@chakra-ui/react";
 import { useGetPostsQuery } from "hooks/apollo";
 import { Post } from "./Post";
 
