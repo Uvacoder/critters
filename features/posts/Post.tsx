@@ -1,10 +1,11 @@
-import { Text, Box, LinkBox, LinkOverlay, Flex, Image } from "@chakra-ui/react";
+import { Text, Box, LinkBox, LinkOverlay, Flex } from "@chakra-ui/react";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { SearchIcon } from "@chakra-ui/icons";
 import { FaPaw } from "react-icons/fa";
 import { formatDate } from "lib/util";
 import { formatDistance } from "date-fns";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export const Post = ({ post }) => {
   // crop images with cloudinary before upload
@@ -29,13 +30,11 @@ export const Post = ({ post }) => {
         if (e.code === "Enter" || e.code === "Space") router.push("/account");
       }}
     >
-      <Box>
+      <Box boxSize="sm" position="relative">
         <Image
           src={post?.critter?.images[0]}
-          alt="animal"
-          objectFit="cover"
-          boxSize="xs"
-          w="100%"
+          alt={`Photo of pet named ${post?.critter?.name}`}
+          layout="fill"
         />
       </Box>
       <Box p="4" as="section">

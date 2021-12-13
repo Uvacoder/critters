@@ -71,7 +71,7 @@ export const Auth = ({ isOpen, onClose }: Props) => {
                     <FormControl
                       mb="3"
                       isRequired
-                      isInvalid={form.errors.email && form.touched.email}
+                      isInvalid={form.errors.email}
                     >
                       <FormLabel htmlFor="email">Email</FormLabel>
                       <Input

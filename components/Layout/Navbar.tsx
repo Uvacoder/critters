@@ -12,9 +12,11 @@ import {
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { FaPaw } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const { data: session } = useSession();
+  const router = useRouter();
 
   const { isOpen, onClose, onOpen } = useDisclosure();
   return (
@@ -67,7 +69,12 @@ export const Navbar = () => {
           ) : (
             <>
               <ListItem>
-                <Button colorScheme="blue">Create a new post</Button>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => router.push("/create")}
+                >
+                  Create a new post
+                </Button>
               </ListItem>
               <ListItem>
                 <NavLink to="/account">Account</NavLink>
