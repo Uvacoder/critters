@@ -6,10 +6,24 @@ export const theme = extendTheme({
       img: {
         objectFit: "cover",
       },
+      body: {
+        fontFamily: "Poppins",
+      },
+      legend: {
+        fontSize: "lg",
+        color: "gray.500",
+      },
     },
   },
   components: {
     Button: {},
+    FormLabel: {
+      baseStyle: {
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        fontSize: "xs",
+      },
+    },
     Input: {
       baseStyle: {
         _focus: {

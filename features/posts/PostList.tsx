@@ -1,4 +1,4 @@
-import { Text, Grid, GridItem, Skeleton } from "@chakra-ui/react";
+import { Text, Grid, GridItem, Skeleton, Box } from "@chakra-ui/react";
 import { useGetPostsQuery } from "hooks/apollo";
 import { Post } from "./Post";
 
@@ -27,7 +27,11 @@ export const PostList = () => {
   console.log(error);
 
   if (error) {
-    return <Text size="lg">There was an error loading the data.</Text>;
+    return (
+      <Box padding="1rem">
+        <Text size="lg">There was an error loading the data.</Text>
+      </Box>
+    );
   }
 
   if (loading) {

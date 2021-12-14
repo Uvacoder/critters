@@ -61,21 +61,20 @@ model User {
 }
 
 model Post {
-  id           String   @id @default(uuid())
-  title        String   @unique
+  id           String    @id @default(uuid())
   description  String
-  dateMissing  String?
-  dateFound    String?
-  reward       Boolean  @default(false)
+  dateMissing  DateTime?
+  dateFound    DateTime?
+  reward       Boolean   @default(false)
   rewardAmount Int?
   location     String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
   status       Status
-  critter      Critter? @relation(fields: [critterId], references: [id])
-  user         User?    @relation("UserToPosts", fields: [userId], references: [id])
+  critter      Critter?  @relation(fields: [critterId], references: [id])
+  user         User?     @relation("UserToPosts", fields: [userId], references: [id])
   userId       String?
-  critterId    String   @unique
+  critterId    String    @unique
 
   @@map("posts")
 }
