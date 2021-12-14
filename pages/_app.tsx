@@ -5,17 +5,20 @@ import { ApolloProvider } from "@apollo/client";
 import { useApollo } from "lib/apolloClient";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "styles/theme";
+import { Error } from "components/Elements";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
   return (
-    <SessionProvider session={session}>
-      <ChakraProvider theme={theme}>
-        <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </ChakraProvider>
-    </SessionProvider>
+    <Error>
+      <SessionProvider session={session}>
+        <ChakraProvider theme={theme}>
+          <ApolloProvider client={apolloClient}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </ChakraProvider>
+      </SessionProvider>
+    </Error>
   );
 }
 

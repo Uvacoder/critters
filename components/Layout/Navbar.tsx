@@ -30,7 +30,7 @@ export const Navbar = () => {
         as="nav"
         display="flex"
         alignItems="center"
-        maxWidth="6xl"
+        maxWidth="8xl"
         margin="auto"
       >
         <Flex alignItems="center" gridGap={2}>

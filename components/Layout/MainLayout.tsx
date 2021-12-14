@@ -1,7 +1,7 @@
-import { Box, useDisclosure } from "@chakra-ui/react";
-import { Auth } from "components/Elements";
+import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import { ReactNode } from "react";
+import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 
 type Props = {
@@ -24,13 +24,13 @@ export const MainLayout = ({ title, children }: Props) => {
       <Box
         as="main"
         id="main-content"
-        maxWidth="6xl"
+        maxWidth="8xl"
         margin="auto"
         flexGrow={1}
-        py="5rem"
       >
         {children}
       </Box>
+      <Footer />
     </>
   );
 };

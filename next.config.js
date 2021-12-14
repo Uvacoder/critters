@@ -4,4 +4,5 @@ module.exports = {
   images: {
     domains: ["i.redd.it"],
   },
+  swcMinify: true,
 };

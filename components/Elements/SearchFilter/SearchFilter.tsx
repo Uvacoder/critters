@@ -27,7 +27,7 @@ export const SearchFilter = () => {
             <FormLabel srOnly>Search for pet</FormLabel>
             <InputGroup>
               <Input
-                placeholder="Search by name or post title"
+                placeholder="Search by name"
                 size="md"
                 variant="filled"
                 type="search"

@@ -17,7 +17,6 @@ export const Post = ({ post }) => {
       aria-label={`View missing pet post for ${post?.critter?.name}`}
       borderWidth="1px"
       borderRadius="lg"
-      maxW={{ base: "100%", md: "sm" }}
       overflow="hidden"
       as="article"
       tabIndex={0}
@@ -30,11 +29,13 @@ export const Post = ({ post }) => {
         if (e.code === "Enter" || e.code === "Space") router.push("/account");
       }}
     >
-      <Box boxSize="sm" position="relative">
+      <Box w="100%" position="relative">
         <Image
           src={post?.critter?.images[0]}
           alt={`Photo of pet named ${post?.critter?.name}`}
-          layout="fill"
+          layout="responsive"
+          width={460}
+          height={450}
         />
       </Box>
       <Box p="4" as="section">
@@ -59,7 +60,6 @@ export const Post = ({ post }) => {
           <FaPaw />
           <Text>{post?.critter?.species}</Text>
         </Flex>
-        {/* <Text color="gray.500">{post.description}</Text> */}
       </Box>
       <Flex as="footer" p="4" color="gray.500">
         <Text>

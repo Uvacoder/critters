@@ -62,7 +62,7 @@ export const PostList = () => {
       }}
       gridGap={3}
     >
-      {Array.from({ length: 5 }, (_, i) => (
+      {Array.from({ length: 7 }, (_, i) => (
         <GridItem>
           <Post post={pet} />
         </GridItem>
