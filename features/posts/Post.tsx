@@ -29,7 +29,7 @@ export const Post = ({ post }) => {
         if (e.code === "Enter" || e.code === "Space") router.push("/account");
       }}
     >
-      <Box w="100%" position="relative">
+      <Box>
         <Image
           src={post?.critter?.images[0]}
           alt={`Photo of pet named ${post?.critter?.name}`}

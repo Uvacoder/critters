@@ -9,13 +9,13 @@ import { PostList } from "features/posts/PostList";
 const Home: NextPage = () => {
   return (
     <MainLayout title="home">
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" px="1rem">
         <Heading
           as="h1"
-          fontSize="4xl"
+          fontSize={{ base: "3xl", md: "4xl", lg: "6xl" }}
           fontWeight="bold"
           textAlign="center"
-          w="md"
+          maxW="2xl"
         >
           Help pet owners reunite with their pets.
         </Heading>

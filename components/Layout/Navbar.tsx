@@ -25,6 +25,7 @@ export const Navbar = () => {
       padding="1rem"
       borderBottom="1px solid"
       borderColor="gray.200"
+      mb="4em"
     >
       <Box
         as="nav"
