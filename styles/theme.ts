@@ -11,12 +11,10 @@ export const theme = extendTheme({
       },
       legend: {
         fontSize: "lg",
-        color: "gray.500",
       },
     },
   },
   components: {
-    Button: {},
     FormLabel: {
       baseStyle: {
         fontWeight: "bold",
