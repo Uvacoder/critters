@@ -19,12 +19,23 @@ import {
   Divider,
   VStack,
   Flex,
+  useDisclosure,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
 } from "@chakra-ui/react";
 import { MainLayout } from "components/Layout";
 import { Formik, Form, Field } from "formik";
+import { useRouter } from "next/router";
 import { BiDollar } from "react-icons/bi";
 
 const Create = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
   return (
     <MainLayout title="Create a new post">
       <Box px="1em" maxW="4xl" m="auto">
@@ -259,7 +270,7 @@ const Create = () => {
                     <Text as="legend">Contact information</Text>
                     <Divider my="4" />
                   </Box>
-                  <Flex gridGap="4">
+                  <Flex gridGap="4" direction={{ base: "column", md: "row" }}>
                     <Field name="humanName">
                       {({ field, form }) => (
                         <FormControl
@@ -304,7 +315,7 @@ const Create = () => {
                   </Flex>
                 </Box>
                 <Flex gridGap={2} justifyContent="flex-end">
-                  <Button colorScheme="red" variant="ghost">
+                  <Button colorScheme="red" variant="ghost" onClick={onOpen}>
                     Cancel
                   </Button>
                   <Button
@@ -320,6 +331,31 @@ const Create = () => {
           }}
         </Formik>
       </Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Are you sure you want to cancel?</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            This listing will not be created and you will be taken back to the
+            main page, proceed?
+          </ModalBody>
+          <ModalFooter>
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button
+              colorScheme="blue"
+              onClick={() => {
+                onClose();
+                router.push("/");
+              }}
+            >
+              OK
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </MainLayout>
   );
 };
