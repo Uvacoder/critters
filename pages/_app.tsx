@@ -10,15 +10,15 @@ import { Error } from "components/Elements";
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
   return (
-    <Error>
-      <SessionProvider session={session}>
-        <ChakraProvider theme={theme}>
-          <ApolloProvider client={apolloClient}>
+    <SessionProvider session={session}>
+      <ChakraProvider theme={theme}>
+        <ApolloProvider client={apolloClient}>
+          <Error>
             <Component {...pageProps} />
-          </ApolloProvider>
-        </ChakraProvider>
-      </SessionProvider>
-    </Error>
+          </Error>
+        </ApolloProvider>
+      </ChakraProvider>
+    </SessionProvider>
   );
 }
 
