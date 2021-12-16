@@ -15,8 +15,16 @@ export const NavLink = ({ to, children, ...rest }: Props) => {
         {...rest}
         fontWeight="semibold"
         tabIndex={0}
+        p="0.6rem"
+        borderRadius="md"
         color="gray.500"
+        w="100%"
+        display="block"
         style={{ textDecoration: "none" }}
+        _hover={{
+          bg: "blue.100",
+          color: "blue.800",
+        }}
         _focus={{
           outline: "4px solid",
           outlineColor: "blue.600",

@@ -21,7 +21,7 @@ export const MainLayout = ({ title, children }: Props) => {
         />
       </Head>
       <Navbar />
-      <Box px="1em" flex="1">
+      <Box flex="1">
         <Box as="main" id="main-content" maxWidth="8xl" margin="auto">
           {children}
         </Box>

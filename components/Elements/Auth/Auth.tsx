@@ -43,7 +43,7 @@ export const Auth = ({ isOpen, onClose }: Props) => {
               const errors = {} as { email: string };
 
               if (!values.email) {
-                errors.email = "Please enter an e-mail address";
+                return;
               } else if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
               ) {
