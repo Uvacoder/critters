@@ -38,7 +38,7 @@ const Create = () => {
   const router = useRouter();
   return (
     <MainLayout title="Create a new post">
-      <Box px="1em" maxW="4xl" m="auto">
+      <Box maxW="4xl">
         <Heading
           as="h1"
           fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
