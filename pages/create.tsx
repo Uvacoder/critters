@@ -33,6 +33,13 @@ import { Formik, Form, Field } from "formik";
 import { useRouter } from "next/router";
 import { BiDollar } from "react-icons/bi";
 
+/**
+ * Things to consider:
+ * - character limits for inputs
+ * - checking if the user already has an active listing
+ * - handling error responses
+ */
+
 const Create = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
